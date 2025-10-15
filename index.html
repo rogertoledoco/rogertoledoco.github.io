@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detalles Amira – Gold Rose Boutique</title>
+
+  <!-- Tipografías premium -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Iconos sociales -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <!-- Iconos Lucide (línea elegante) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root{
+      --gold:#C7A567;
+      --gold-strong:#B8924A;
+      --rose:#D5A7B4;
+      --ink:#1A1A1A;
+      --soft:#f7f4f2;
+      --card:#ffffff;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:14px;
+    }
+
+    /* Reset básico */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      line-height:1.65;
+      background: radial-gradient(1400px 800px at 20% -10%, #fff 0%, #fff7f7 30%, #f7efe8 60%, #f3e9da 85%), linear-gradient(180deg,#fff 0%, #f9f3ee 60%, #f5ecde 100%);
+      min-height:100dvh;
+    }
+    img{max-width:100%;display:block}
+
+    /* ===== NAVBAR PREMIUM ===== */
+    header{
+      position:sticky; top:0; z-index:1000;
+      backdrop-filter:saturate(140%) blur(14px);
+      background:rgba(255,255,255,.85);
+      box-shadow:0 2px 18px rgba(0,0,0,.05), inset 0 -1px 0 rgba(199,165,103,.15);
+    }
+    .nav-wrap{
+      max-width:1200px; margin:auto;
+      padding:0px 10px; display:flex; align-items:center; justify-content:space-between; gap:20px;
+    }
+    .logo img{height:190px; object-fit:contain}
+    nav.menu{display:flex; align-items:center; gap:26px}
+    nav.menu a{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:16px; font-weight:500; color:#3A3A3A; text-decoration:none;
+      padding:10px 12px; border-radius:12px; transition:.3s ease;
+      position:relative; isolation:isolate;
+    }
+    nav.menu a i{transition:transform .35s ease, color .35s ease}
+    nav.menu a:hover{color:var(--gold-strong); background:rgba(199,165,103,.08)}
+    nav.menu a:hover i{transform:translateY(-3px) scale(1.12) rotate(8deg); color:var(--gold-strong)}
+    /* Pequeño halo dorado al hacer hover */
+    nav.menu a::after{
+      content:""; position:absolute; inset:auto 0 -2px 0; height:2px; width:0%;
+      margin:auto; background:linear-gradient(90deg, transparent, var(--gold), transparent);
+      transition:width .35s ease;
+    }
+    nav.menu a:hover::after{width:100%}
+
+    /* Hero */
+    .hero{
+      position:relative; display:grid; place-items:center; text-align:center;
+      min-height:56dvh; padding:80px 20px 40px;
+      overflow:hidden;
+    }
+    .hero h1{
+      font-family:"Playfair Display",serif; font-weight:700;
+      font-size:clamp(36px,5vw,56px); letter-spacing:.4px;
+      color:#201d1b;
+    }
+    .hero p{max-width:720px; margin:18px auto 0; font-size:18px; opacity:.9}
+    .btn{
+      display:inline-block; margin-top:28px; padding:12px 24px; border-radius:999px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--rose) 100%);
+      color:#fff; border:0; cursor:pointer; font-weight:600; letter-spacing:.2px;
+      box-shadow:0 8px 24px rgba(215,173,128,.28);
+      transition:transform .15s ease, filter .35s ease, box-shadow .35s ease;
+      position:relative; overflow:hidden;
+    }
+    /* reflejo sutil */
+    .btn::before{
+      content:""; position:absolute; top:-120%; left:-20%;
+      width:40%; height:300%; transform:rotate(25deg);
+      background:linear-gradient(90deg,rgba(255,255,255,.0),rgba(255,255,255,.6),rgba(255,255,255,0));
+      transition:transform .9s ease; pointer-events:none;
+    }
+    .btn:hover{transform:translateY(-2px); filter:saturate(110%); box-shadow:0 14px 36px rgba(215,173,128,.36)}
+    .btn:hover::before{transform:translateX(320%) rotate(25deg)}
+
+    /* Secciones */
+    section{padding:72px 20px}
+    .container{max-width:1150px; margin:auto}
+
+    /* Productos */
+    h2.section-title{
+      font-family:"Playfair Display",serif; font-weight:700; font-size:clamp(28px,3.6vw,38px);
+      margin-bottom:22px; color:#2a2623;
+      text-align:center;
+    }
+    .section-sub{ text-align:center; color:#6a625c; margin-bottom:36px }
+    .productos-grid{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:26px;
+    }
+    .card{
+      background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+      overflow:hidden; transform:translateY(8px); transition:transform .35s ease, box-shadow .35s ease, filter .35s ease;
+    }
+    .card:hover{ transform:translateY(0); box-shadow:0 16px 42px rgba(0,0,0,.10) }
+    .card img{aspect-ratio:4/3; object-fit:cover}
+    .card .info{padding:18px}
+    .card .info h4{font-weight:600; margin-bottom:6px}
+    .card .info p{font-size:14.5px; color:#6d655f; margin-bottom:14px}
+    .card .info .mini{display:flex; gap:10px; align-items:center; color:#8a7b70; font-size:13px}
+    .price{margin-left:auto; font-weight:600; color:var(--gold-strong)}
+
+    /* Testimonios */
+    .testimonios{background:linear-gradient(180deg, rgba(255,255,255,.6), rgba(245,237,226,.7))}
+    .testi-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:26px}
+    .testi{
+      background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:22px 22px 20px; position:relative;
+    }
+    .testi::before{
+      content:"“"; font-family:serif; font-size:48px; line-height:0; color:#eadbc6;
+      position:absolute; top:18px; left:16px;
+    }
+    .testi p{margin:18px 0 12px 0; color:#4a4642}
+    .testi h5{ text-align:right; color:var(--gold-strong); font-weight:700}
+
+    /* Footer */
+    footer{background:#141313; color:#e9e2d8}
+    .footer-wrap{max-width:1150px; margin:auto; padding:48px 20px; display:grid; grid-template-columns:2fr 1fr 1fr; gap:28px}
+    .brand-note h3{font-family:"Playfair Display",serif; font-size:26px; margin-bottom:10px}
+    .brand-note p{color:#cfc4b6}
+    .socials{display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+    .socials a{
+      width:38px; height:38px; display:grid; place-items:center; border-radius:999px;
+      background:#211f1d; color:#f3eadf; transition:.3s; border:1px solid rgba(199,165,103,.25)
+    }
+    .socials a:hover{ transform:translateY(-2px); color:#fff; background:linear-gradient(135deg, var(--gold) 0%, var(--rose) 100%); border-color:transparent }
+
+    /* Delivery block */
+    .delivery{
+      display:flex; align-items:center; gap:12px; margin-top:14px; padding:10px 12px;
+      background:#1b1a18; border:1px solid rgba(199,165,103,.25); border-radius:12px; box-shadow:inset 0 0 0 1px rgba(255,255,255,.02);
+    }
+    .delivery svg{width:28px; height:28px; fill:none; stroke:var(--gold); stroke-width:2; }
+    .delivery span{color:#e9e2d8; font-weight:600}
+    /* Moto animación suave */
+    .delivery svg #wheel1, .delivery svg #wheel2{
+      animation:spin 4s linear infinite;
+      transform-origin:center;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .delivery svg #bike{ animation:ride 3.6s ease-in-out infinite }
+    @keyframes ride{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+
+    /* Scroll reveal base */
+    .reveal{opacity:0; transform:translateY(16px); transition:opacity .8s ease, transform .8s ease}
+    .reveal.show{opacity:1; transform:translateY(0)}
+
+    /* Utilidades */
+    .mt-2{margin-top:8px} .mt-3{margin-top:14px} .mt-4{margin-top:22px}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .footer-wrap{grid-template-columns:1fr}
+      .logo img{height:64px}
+      nav.menu{gap:14px}
+    }
+.portada {
+  position: relative;
+  background-image: url('img/portada1.png'); /* tu imagen aquí */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* ocupa toda la pantalla */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 80px 20px;
+}
+
+/* efecto filtro premium dorado-rosado */
+.portada::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 215, 170, 0.3),
+    rgba(255, 192, 203, 0.3)
+  );
+  z-index: 0;
+}
+
+.portada * {
+  position: relative;
+  z-index: 1;
+}
+.slider {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35); /* oscurece un poco el fondo */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  z-index: 2;
+}
+
+.overlay h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.overlay p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+.overlay button {
+  background: linear-gradient(to right, #e6b980, #eacda3);
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 35px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.overlay button:hover {
+  transform: scale(1.05);
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <header>
+    <div class="nav-wrap">
+      <a class="logo" href="#inicio" aria-label="Inicio Detalles Amira">
+        <img src="logo-amira.png" alt="Detalles Amira">
+      </a>
+      <nav class="menu">
+        <a href="#inicio" aria-label="Inicio"><i data-lucide="home"></i>Inicio</a>
+        <a href="#productos" aria-label="Productos"><i data-lucide="package"></i>Productos</a>
+        <a href="#testimonios" aria-label="Testimonios"><i data-lucide="message-circle"></i>Testimonios</a>
+        <a href="#contacto" aria-label="Contacto"><i data-lucide="phone"></i>Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+ <section class="slider">
+  <div class="slide active" style="background-image: url('img/portada1.png');"></div>
+  <div class="slide" style="background-image: url('img/portada2.png');"></div>
+  <div class="slide" style="background-image: url('img/portada3.png');"></div>
+  <div class="slide" style="background-image: url('img/portada4.png');"></div>
+
+  <div class="overlay">
+    <h1>Exquisitez y Detalles que Enamoran</h1>
+    <p>Celebramos los momentos con delicadeza estética y un toque de lujo.<br>
+       Descubre detalles premium.</p>
+    
+  </div>
+</section>
+
+  </section>
+
+  <!-- ===== PRODUCTOS ===== -->
+  <section id="productos">
+    <div class="container">
+      <h2 class="section-title reveal">Productos Destacados</h2>
+      <p class="section-sub reveal">Hechos con amor, presentados con elegancia y diseñados para sorprender.</p>
+
+<div class="productos-grid">
+
+<!-- 1 -->
+<article class="card reveal"><img src="img/foto1.jpeg" alt="Detalle 1"><div class="info"><h4>Desayuno Premium Azul Royal</h4><p>Sorprende con una experiencia única: una bandeja elegante con delicados detalles en azul, globos metálicos, flores frescas y un mix gourmet que incluye pastel artesanal, pancakes, jugo natural, café Starbucks y snacks selectos.
+💙 Perfecto para celebrar con estilo y distinción.</p><div class="mini"><span class="price">S/ 259</span></div></div></article>
+
+<!-- 2 -->
+<article class="card reveal"><img src="img/foto2.jpeg" alt="Detalle 2"><div class="info"><h4>Desayuno Premium Amor Dorado</h4><p>Un detalle elegante y lleno de luz: incluye pastel artesanal, smoothie natural, mix de frutos secos, jugo fresco y un hermoso girasol que ilumina cualquier día.
+💛 Ideal para sorprender con ternura, amor y un toque de lujo.</p><div class="mini"><span class="price">S/ 160</span></div></div></article>
+
+<!-- 3 -->
+<article class="card reveal"><img src="img/foto3.jpeg" alt="Detalle 3"><div class="info"><h4>Desayuno Premium Mi Rey Dorado </h4><p>Un regalo majestuoso para celebrar en grande: bandeja elegante con detalles en dorado y rosa, globos metálicos, postres artesanales, jugos naturales y delicias gourmet.
+✨ Diseñado para sorprender con elegancia, amor y un toque real de lujo.</p><div class="mini"><span class="price">S/ 220</span></div></div></article>
+
+<!-- 4 -->
+<article class="card reveal"><img src="img/foto4.jpeg" alt="Detalle 4"><div class="info"><h4> Desayuno Premium Rosé Love</h4><p>Un detalle encantador y sofisticado: incluye delicias gourmet, jugo natural, postres artesanales y frutas frescas, acompañado de un elegante arco de globos en tonos rosa y fucsia.
+🌸 Ideal para consentir a esa persona especial con dulzura y estilo.</p><div class="mini"><span class="price">S/ 160</span></div></div></article>
+
+<!-- 5 -->
+<article class="card reveal"><img src="img/foto5.jpeg" alt="Detalle 5"><div class="info"><h4>Desayuno Premium Sweet Dreams </h4><p>Un regalo tierno y encantador: incluye peluche suave, taza personalizada, delicias artesanales, jugo natural y decoración en tonos rosados con globos metálicos.
+🌷 Perfecto para celebrar con dulzura, amor y un toque mágico de ternura.</p><div class="mini"><span class="price">S/ 199</span></div></div></article>
+
+<!-- 6 -->
+<article class="card reveal"><img src="img/foto6.jpeg" alt="Detalle 6"><div class="info"><h4>Desayuno Premium Batman Edition</h4><p>Un detalle heroico y original: incluye delicias gourmet, bebidas exclusivas, peluche temático y decoración inspirada en Batman con tonos negro y amarillo.
+⚡ Ideal para sorprender a tu héroe favorito con poder, estilo y mucho amor.</p><div class="mini"><span class="price">S/ 180</span></div></div></article>
+
+<!-- 7 -->
+<article class="card reveal"><img src="img/foto7.jpeg" alt="Detalle 7"><div class="info"><h4>Desayuno Premium Hot Wheels</h4><p>Un detalle lleno de energía y diversión: incluye deliciosos postres, jugo natural, snacks y decoración temática inspirada en Hot Wheels con tonos azul, naranja y plata.
+🔥 Perfecto para sorprender a los pequeños campeones que aman la velocidad y la emoción.</p><div class="mini"><span class="price">S/ 189</span></div></div></article>
+
+<!-- 8 -->
+<article class="card reveal"><img src="img/foto8.jpeg" alt="Detalle 8"><div class="info"><h4>Desayuno Premium Día del Padre</h4><p>Un detalle elegante y varonil: incluye desayuno gourmet, taza temática, snacks selectos y una cuidada decoración en tonos dorado, negro y madera.
+💛 Perfecto para celebrar a papá con estilo, distinción y mucho cariño.</p><div class="mini"><span class="price">S/ 189</span></div></div></article>
+
+<!-- 9 -->
+<article class="card reveal"><img src="img/foto9.jpeg" alt="Detalle 9"><div class="info"><h4>Desayuno Premium Crema Pasión</h4><p>Un detalle lleno de orgullo y amor: incluye desayuno gourmet, jugo natural, postres artesanales y decoración inspirada en el equipo crema con tonos rojo, dorado y blanco.
+🔥 Perfecto para sorprender a ese hincha apasionado con sabor, estilo y corazón merengue.</p><div class="mini"><span class="price">S/ 180</span></div></div></article>
+
+<!-- 10 -->
+<article class="card reveal"><img src="img/foto10.jpeg" alt="Detalle 10"><div class="info"><h4>Desayuno Premium Deadpool Edition </h4><p>Un detalle divertido y atrevido: incluye desayuno gourmet, snacks exclusivos, bebida especial y decoración inspirada en Deadpool con globos rojo y negro.
+💥 Perfecto para sorprender con humor, estilo y una dosis de energía irreverente.</p><div class="mini"><span class="price">S/ 149</span></div></div></article>
+
+<!-- 11 -->
+<article class="card reveal"><img src="img/foto11.jpeg" alt="Detalle 11"><div class="info"><h4>Desayuno Premium Edición Crema</h4><p>Un detalle único para verdaderos hinchas: incluye peluche temático, postres gourmet, bebidas selectas y decoración en los clásicos colores crema y guinda.
+🏆 Ideal para celebrar con pasión, orgullo y el espíritu inquebrantable del más grande.</p><div class="mini"><span class="price">S/ 210</span></div></div></article>
+
+<!-- 12 -->
+<article class="card reveal"><img src="img/foto12.jpeg" alt="Detalle 12"><div class="info"><h4>Desayuno Premium Azul Éxito</h4><p>Un detalle elegante y sofisticado: incluye delicias gourmet, jugo natural, postres artesanales y decoración en tonos azul, plata y dorado.
+✨ Perfecto para celebrar con clase, estilo y un toque de distinción especial.</p><div class="mini"><span class="price">S/ 160</span></div></div></article>
+
+<!-- 13 -->
+<article class="card reveal"><img src="img/foto13.jpeg" alt="Detalle 13"><div class="info"><h4>Desayuno Premium Sorpresa Box</h4><p>Un detalle práctico y delicioso: incluye sándwiches frescos, frutas, waffles con frutas, jugo natural y bocaditos dulces, todo cuidadosamente presentado en caja decorativa.
+💐 Ideal para sorprender con un desayuno completo, elegante y lleno de sabor en cualquier ocasión especial.</p><div class="mini"><span class="price">S/ 99</span></div></div></article>
+
+<!-- 14 -->
+<article class="card reveal"><img src="img/foto14.jpeg" alt="Detalle 14"><div class="info"><h4>Desayuno Premium Dulce Amor </h4><p>Un detalle delicado y lleno de cariño: incluye postres artesanales, jugo natural, snacks gourmet y decoración con flores, globos y fotos personalizadas.
+💖 Ideal para celebrar momentos especiales con ternura, elegancia y amor auténtico.</p><div class="mini"><span class="price">S/ 139</span></div></div></article>
+
+<!-- 15 -->
+<article class="card reveal"><img src="img/foto15.jpeg" alt="Detalle 15"><div class="info"><h4>Desayuno Premium Hija Especial</h4><p>Un detalle dulce y encantador: incluye pastel artesanal, parfait de frutas, jugo natural, chocolates y un hermoso ramo de flores con decoración en tonos rosado y dorado.
+🌸 Perfecto para celebrar a tu hija con amor, ternura y un toque de elegancia única.</p><div class="mini"><span class="price">S/ 259</span></div></div></article>
+
+<!-- 16 -->
+<article class="card reveal"><img src="img/foto16.jpeg" alt="Detalle 16"><div class="info"><h4>Desayuno Premium Mamá Encanto</h4><p>Un detalle lleno de amor y elegancia: incluye delicias gourmet, jugo natural, dulces artesanales y una hermosa decoración con globos, flores y mariposas.
+🌷 Perfecto para celebrar a mamá en su día especial con ternura, color y mucho cariño.</p><div class="mini"><span class="price">S/ 210</span></div></div></article>
+
+<!-- 17 -->
+<article class="card reveal"><img src="img/foto17.jpeg" alt="Detalle 17"><div class="info"><h4>Desayuno Premium Gourmet Box</h4><p>Un detalle sofisticado y moderno: incluye frutas frescas, embutidos selectos, quesos finos, snacks crocantes, jugos naturales y bebidas artesanales.
+🍇 Ideal para regalar una experiencia gourmet llena de sabor, estilo y distinción.</p><div class="mini"><span class="price">S/ 179</span></div></div></article>
+
+<!-- 18 -->
+<article class="card reveal"><img src="img/foto18.jpeg" alt="Detalle 18"><div class="info"><h4>Desayuno Premium Graduación Médica</h4><p>Un detalle elegante para celebrar logros especiales: incluye frutas frescas, snacks gourmet, jugo natural y dulces artesanales, con decoración en tonos azul y plata.
+🩺 Perfecto para felicitar a ese nuevo profesional con estilo, orgullo y un toque de distinción.</p><div class="mini"><span class="price">S/ 205</span></div></div></article>
+
+<!-- 19 -->
+<article class="card reveal"><img src="img/foto19.jpeg" alt="Detalle 19"><div class="info"><h4>Desayuno Premium Cumple Infantil</h4><p>Un detalle colorido y alegre: incluye waffles, yogurt con granola, jugo natural y dulces artesanales, con una decoración vibrante inspirada en personajes animados.
+🎉 Perfecto para celebrar el cumpleaños de los más pequeños con diversión, sabor y mucha magia.</p><div class="mini"><span class="price">S/ 139</span></div></div></article>
+
+<!-- 20 -->
+<article class="card reveal"><img src="img/foto20.jpeg" alt="Detalle 20"><div class="info"><h4>Desayuno Premium Amor Total </h4><p>Un detalle romántico y delicioso: incluye sándwich gourmet, waffles con frutas, snacks dulces, jugo natural y decoración personalizada con fotos y mensajes de amor.
+💞 Perfecto para sorprender a esa persona especial con un desayuno lleno de sabor y sentimiento.</p><div class="mini"><span class="price">S/ 110</span></div></div></article>
+
+<!-- 21 -->
+<article class="card reveal"><img src="img/foto21.jpeg" alt="Detalle 21"><div class="info"><h4>Desayuno Premium San Valentín </h4><p>Un detalle romántico y encantador: incluye pastelitos, jugo natural, bocaditos dulces y decoración personalizada con fotos, cartas y corazones.
+❤️ Perfecto para sorprender a tu persona especial con amor, ternura y un desayuno lleno de detalles únicos.</p><div class="mini"><span class="price">S/ 130</span></div></div></article>
+
+<!-- 22 -->
+<article class="card reveal"><img src="img/foto22.jpeg" alt="Detalle 22"><div class="info"><h4>Desayuno Premium Cumpleaños Caballero </h4><p>Un detalle elegante y sofisticado: incluye pastel, snacks dulces y salados, jugo natural y bebida especial, decorado en tonos azul y plata con globo personalizado.
+🎩 Ideal para celebrar el cumpleaños de un hombre especial con estilo, sabor y un toque distinguido.</p><div class="mini"><span class="price">S/ 160</span></div></div></article>
+
+<!-- 23 -->
+<article class="card reveal"><img src="img/foto23.jpeg" alt="Detalle 23"><div class="info"><h4> Set de Regalo Premium Personalizado </h4><p>Un detalle elegante y minimalista: incluye un vaso térmico personalizado, chocolates finos y dulces artesanales, decorado con cinta y detalles naturales.
+🎁 Ideal para obsequiar en cualquier ocasión especial, combinando estilo, sabor y un toque personal único.</p><div class="mini"><span class="price">S/ 159</span></div></div></article>
+
+<!-- 24 -->
+<article class="card reveal"><img src="img/foto24.jpeg" alt="Detalle 24"><div class="info"><h4>Box Criollo Edición Especial</h4><p>Un detalle lleno de sabor y tradición: incluye Inca Kola, turrón de Doña Pepa y un adorno típico peruano, decorado con cintas festivas.
+🎶 Perfecto para celebrar el Día de la Canción Criolla con un toque patriótico, dulce y lleno de orgullo nacional.</p><div class="mini"><span class="price">S/ 59</span></div></div></article>
+
+<!-- 25 -->
+<article class="card reveal"><img src="img/foto25.jpeg" alt="Detalle 25"><div class="info"><h4> Box Desayuno Premium Individual </h4><p>Una presentación elegante y deliciosa para comenzar el día. Incluye jugos naturales, mini sándwiches surtidos, bocaditos dulces y copas de frutas frescas.
+✨ Ideal para regalos, reuniones corporativas o eventos especiales donde cada detalle cuenta.</p><div class="mini"><span class="price">S/ 79</span></div></div></article>
+
+<!-- 26 -->
+<article class="card reveal"><img src="img/foto26.jpeg" alt="Detalle 26"><div class="info"><h4>Ramo de Rosas Blancas con Corona</h4><p>Un elegante bouquet compuesto por rosas blancas frescas, envueltas en delicado papel rosado translúcido y decorado con una fina corona plateada.
+👑 Ideal para cumpleaños, aniversarios o momentos especiales donde se desea expresar amor puro, admiración y elegancia.</p><div class="mini"><span class="price">S/ 210</span></div></div></article>
+
+<!-- 27 -->
+<article class="card reveal"><img src="img/foto27.jpeg" alt="Detalle 27"><div class="info"><h4>Ramo de Rosas Rosadas y Blancas con Corona y Mariposas Doradas </h4><p>Un bouquet majestuoso con rosas rosadas y blancas cuidadosamente dispuestas, adornado con una corona brillante, lazo de satén blanco y delicadas mariposas doradas.
+🎀 Perfecto para cumpleaños, aniversarios o celebraciones especiales, simbolizando belleza, amor y elegancia en un solo detalle inolvidable.</p><div class="mini"><span class="price">S/ 299</span></div></div></article>
+
+<!-- 28 -->
+<article class="card reveal"><img src="img/foto28.jpeg" alt="Detalle 28"><div class="info"><h4> Ramo de Girasoles y Rosas Amarillas</h4><p>Un arreglo lleno de vida y energía que combina girasoles radiantes, rosas amarillas y delicadas flores blancas con follaje natural, envuelto en papel rosa pastel y lazo decorativo.
+💛 Perfecto para transmitir alegría, optimismo y cariño — ideal para cumpleaños, agradecimientos o para iluminar el día de alguien especial.</p><div class="mini"><span class="price">S/ 95</span></div></div></article>
+
+<!-- 29 -->
+<article class="card reveal"><img src="img/foto29.jpeg" alt="Detalle 29"><div class="info"><h4>Ramo Floral Mixto Premium</h4><p>Un bouquet impresionante que combina girasoles, lirios, gerberas, rosas y flores de temporada en tonos pastel y vibrantes, envueltos en elegante papel lila con lazo decorativo.
+💐 Ideal para sorprender en cumpleaños, aniversarios o momentos especiales — un detalle lleno de color, armonía y sofisticación que transmite alegría y cariño.</p><div class="mini"><span class="price">S/ 95</span></div></div></article>
+
+<!-- 30 -->
+<article class="card reveal"><img src="img/foto30.jpeg" alt="Detalle 30"><div class="info"><h4>Ramo de Tulipanes Morados </h4><p>Un elegante bouquet de tulipanes en tono lavanda, envueltos en papel blanco satinado y lazo lila a juego.
+🌷 Perfecto para regalar en aniversarios, cumpleaños o cualquier ocasión especial, simbolizando amor, serenidad y elegancia con un estilo moderno y delicado.</p><div class="mini"><span class="price">S/ 180</span></div></div></article>
+
+<!-- 31 -->
+<article class="card reveal"><img src="img/foto31.jpeg" alt="Detalle 31"><div class="info"><h4>Ramo Mini Elegancia Rosas y Tulipanes</h4><p>Un delicado arreglo que combina tulipanes morados con rosas rosadas, flores blancas y follaje verde, envuelto en papel beige texturizado y lazo con la frase “Love is Eternal”.
+🌸 Ideal para un detalle sutil y romántico, perfecto para expresar ternura, gratitud o amor con elegancia y estilo minimalista.</p><div class="mini"><span class="price">S/ 80</span></div></div></article>
+
+<!-- 32 -->
+<article class="card reveal"><img src="img/foto32.jpeg" alt="Detalle 32"><div class="info"><h4>Ramo de Girasoles Vibrantes</h4><p>Un alegre bouquet de girasoles acompañado de flores moradas y follaje verde, envuelto en papel traslúcido con bordes lilas y lazo a juego.
+☀️ Perfecto para regalar energía positiva, felicidad y gratitud — ideal para cumpleaños, celebraciones o simplemente para iluminar el día de alguien especial.</p><div class="mini"><span class="price">S/ 99</span></div></div></article>
+
+<!-- 33 -->
+<article class="card reveal"><img src="img/foto33.jpeg" alt="Detalle 33"><div class="info"><h4>Poleras Enamorados – Edición Pareja</h4><p>Un detalle perfecto para compartir con esa persona especial: conjunto de hoodies negras con diseño artístico bordado y frases románticas “Eres mi Vida” y “Eres mi Amor”.
+💞 Ideales para parejas que desean combinar estilo, cariño y complicidad en un look moderno y único.</p><div class="mini"><span class="price">S/ 69</span></div></div></article>
+
+<!-- 34 -->
+<article class="card reveal"><img src="img/foto34.jpeg" alt="Detalle 34"><div class="info"><h4>Polera “Booey” Edición Halloween </h4><p>Una prenda divertida y moderna: polo negro con diseño temático de Halloween, estampado colorido y estilo casual.
+🎃 Perfecta para disfrutar la temporada con un toque original, cómodo y lleno de espíritu festivo.</p><div class="mini"><span class="price">S/ 55</span></div></div></article>
+
+<!-- 35 -->
+<article class="card reveal"><img src="img/foto35.jpeg" alt="Detalle 35"><div class="info"><h4>Polo “Only You” Edición Especial</h4><p>Diseño urbano con estampado fotográfico en la espalda y tipografía moderna en blanco sobre negro. Incluye la frase “You are my everything”, ideal para expresar un estilo personal con toque romántico y contemporáneo.
+✨ Perfecto para uso casual o como regalo especial, combinando comodidad, diseño y significado en una sola prenda.</p><div class="mini"><span class="price">S/ 59</span></div></div></article>
+
+<!-- 36 -->
+<article class="card reveal"><img src="img/foto36.jpeg" alt="Detalle 36"><div class="info"><h4>Polo “Morat Tour Edición Limitada</h4><p>Camiseta blanca con diseño exclusivo en la parte posterior, presentando collage fotográfico del grupo musical y tipografía moderna en negro. Incluye la frase “Gira por los Estados”, inspirada en sus presentaciones internacionales.
+🎵 Perfecta para fanáticos del grupo, ideal para uso casual o como recuerdo de colección con estilo urbano y auténtico.</p><div class="mini"><span class="price">S/ 59</span></div></div></article>
+
+<!-- 37 -->
+<article class="card reveal"><img src="img/foto37.jpeg" alt="Detalle 37"><div class="info"><h4>Polo “We’re Friends ’Til the End</h4><p>Camiseta blanca con estampado colorido y tipografía de estilo terror clásico, acompañada de un diseño ilustrado del icónico personaje.
+🔥 Perfecta para los amantes del cine de terror o para quienes buscan un look divertido y atrevido. Ideal para Halloween, eventos temáticos o un outfit casual con personalidad.</p><div class="mini"><span class="price">S/ 59</span></div></div></article>
+
+<!-- 38 -->
+<article class="card reveal"><img src="img/foto38.jpeg" alt="Detalle 38"><div class="info"><h4>Hoodie Personalizado “Protección C</h4><p>Sudadera blanca con diseño tipo collage que incluye fotografías uniformadas y texto en tipografía moderna. Lleva el título “PROTECCIÓN C.” y la frase “Pueblo hecho ley – Presto a servir, listo a morir – Policía Nacional del Perú”, junto con un detalle de código de barras y fecha personalizada.
+💪 Ideal como prenda conmemorativa o de orgullo institucional, perfecta para rendir homenaje, uso casual o regalo significativo con identidad y estilo.</p><div class="mini"><span class="price">S/ 69</span></div></div></article>
+
+<!-- 39 -->
+<article class="card reveal"><img src="img/foto39.jpeg" alt="Detalle 39"><div class="info"><h4>Hoodie “Enfermera de Profesión y Corazón</h4><p>Sudadera blanca con diseño elegante y frase inspiradora en el pecho: “Enfermera de profesión y corazón”, con tipografía cursiva en rosa y detalle de estetoscopio en la manga.
+💉 Perfecta para profesionales de la salud que llevan su vocación con orgullo. Ideal para el día a día, regalos personalizados o conmemoraciones especiales.</p><div class="mini"><span class="price">S/ 79</span></div></div></article>
+
+<!-- 40 -->
+<article class="card reveal"><img src="img/foto40.jpeg" alt="Detalle 40"><div class="info"><h4>Hoodies Personalizados “Freddy & Melissa</h4><p>Sudaderas blancas combinadas con diseño de línea cardíaca y corazón central, acompañadas de los nombres personalizados “Freddy” y “Melissa” y la frase “Tú y yo hasta donde el destino nos lleve ❤️”.
+💑 Perfectas para parejas que desean expresar su conexión y amor con estilo. Confeccionadas en tela suave, ideales para usar juntos en salidas, viajes o sesiones de fotos románticas.</p><div class="mini"><span class="price">S/ 49</span></div></div></article>
+
+</div>
+
+
+
+  <!-- ===== TESTIMONIOS ===== -->
+  <section class="testimonios" id="testimonios">
+    <div class="container">
+      <h2 class="section-title reveal">Lo que dicen nuestras clientes</h2>
+      <div class="testi-grid">
+        <article class="testi reveal">
+          <p>“El empaque es precioso y la atención increíble. Se siente lujo desde el primer vistazo.”</p>
+          <h5>— Ana G.</h5>
+        </article>
+        <article class="testi reveal">
+          <p>“Llegó puntualmente y más hermoso de lo que esperaba. ¡Recomendadísimo!”</p>
+          <h5>— María F.</h5>
+        </article>
+        <article class="testi reveal">
+          <p>“Los detalles son de otro nivel, se nota el cariño y la curaduría.”</p>
+          <h5>— Carla S.</h5>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section id="contacto">
+    <div class="container">
+      <h2 class="section-title reveal">Contáctanos</h2>
+      <div class="reveal">
+        <form id="formContacto" class="contact">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+            <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px;border:1px solid #e7d9c3;border-radius:12px;background:#fff;">
+            <input type="email" name="email" placeholder="Tu correo electrónico" required style="padding:12px;border:1px solid #e7d9c3;border-radius:12px;background:#fff;">
+          </div>
+          <textarea name="mensaje" rows="4" placeholder="Tu mensaje" required style="width:100%;padding:12px;border:1px solid #e7d9c3;border-radius:12px;background:#fff;"></textarea>
+          <br>
+          <button type="submit" class="btn">Enviar mensaje</button>
+        </form>
+        <div id="mensajeEnviado" class="mt-3" style="display:none;color:green;font-weight:600">¡Mensaje enviado! Gracias por tu interés.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-wrap">
+      <div class="brand-note">
+        <h3>Detalles Amira</h3>
+        <p><p>
+Desayunos y detalles personalizados que despiertan emociones.  
+Fusionamos arte, sabor y elegancia en cada entrega.  
+Vive la experiencia Amira: lujo que se saborea y se siente.
+</p>
+</p>
+
+        <!-- Delivery -->
+        <div class="delivery mt-3" title="Delivery Disponible">
+          <!-- Moto SVG dorada -->
+          <svg viewBox="0 0 64 32" aria-hidden="true">
+            <g id="bike">
+              <circle id="wheel1" cx="14" cy="24" r="6"></circle>
+              <circle id="wheel2" cx="46" cy="24" r="6"></circle>
+              <path d="M14 24 L22 16 L28 24 L38 24 L42 18 L50 18" />
+              <path d="M22 16 L26 10 L32 10" />
+              <rect x="48" y="10" width="10" height="6" rx="1" ry="1"></rect>
+            </g>
+          </svg>
+          <span>Delivery Disponible</span>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="color:#f0e6d6;margin-bottom:10px">Síguenos</h4>
+        <div class="socials">
+          <a href="https://www.facebook.com/share/1AaxBEMwDV/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/detallesamira.pe" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@detallesamira.shop" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="color:#f0e6d6;margin-bottom:10px">Contacto</h4>
+        <p>📍 Lima, Perú</p>
+        <p>✉️ detallesamira.shop@gmail.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Iniciar iconos Lucide
+    lucide.createIcons();
+
+    // Scroll reveal (IntersectionObserver)
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+      })
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Formulario (demo)
+    document.getElementById('formContacto').addEventListener('submit', e=>{
+      e.preventDefault();
+      document.getElementById('mensajeEnviado').style.display='block';
+      e.target.reset();
+    });
+  </script>
+<script>
+  let slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function changeSlide() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }
+
+  setInterval(changeSlide, 4000); // cambia cada 4 segundos
+</script>
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/519XXXXXXXX" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Font Awesome (para el ícono) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ==== BOTÓN FLOTANTE WHATSAPP ==== */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 32px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float i {
+  margin-top: 14px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  background-color: #20ba5a;
+}
+</style>
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/51923411524?text=Hola%2C%20quiero%20más%20información%20sobre%20tus%20productos%20✨" 
+   class="whatsapp-float" 
+   target="_blank" 
+   aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+
+
+</body>
+</html>
